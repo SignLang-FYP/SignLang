@@ -1,4 +1,4 @@
-// File: C:\Users\SanaUllah\SignLang\website\app\learning\page.tsx
+// File: C:\Users\SanaUllah\Desktop\SignLang\website\app\learning\page.tsx
 import * as entry from '../../../../app/learning/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
