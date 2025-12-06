@@ -2,10 +2,5 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
   "/(auth)/register/page": "app/(auth)/register/page.js",
-  "/api/auth/register/route": "app/api/auth/register/route.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/api/auth/login/route": "app/api/auth/login/route.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/learning/page": "app/learning/page.js",
-  "/evaluation/page": "app/evaluation/page.js"
+  "/(auth)/login/page": "app/(auth)/login/page.js"
 }
