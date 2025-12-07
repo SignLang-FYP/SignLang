@@ -25,21 +25,21 @@ export default function Dashboard() {
       <div style={{ width: "100%", maxWidth: "420px" }}>
         {/* CARD 1 */}
         <div style={cardStyle}>
-          <Link href="/test" style={linkTextStyle}>
+          <Link href="/dashboard/test" style={linkTextStyle}>
             Test
           </Link>
         </div>
 
         {/* CARD 2 */}
         <div style={cardStyle}>
-          <Link href="/lessons" style={linkTextStyle}>
+          <Link href="/dashboard/lessons" style={linkTextStyle}>
             Lessons
           </Link>
         </div>
 
         {/* CARD 3 */}
         <div style={cardStyle}>
-          <Link href="/progress" style={linkTextStyle}>
+          <Link href="/dashboard/progress" style={linkTextStyle}>
             Progress
           </Link>
         </div>
