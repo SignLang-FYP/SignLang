@@ -11,34 +11,81 @@ export default function LessonsPage() {
   const streamRef = useRef(null);
 
   const lessons = [
+    // Urdu Lessons
     { 
       id: 1, 
-      title: "بنیادی سلام",
-      question: "پاکستان کے بانی کا نام کیا تھا؟",
-      answer: "پاکستان کے بانی کا نام قائداعظم ہے۔",
-      image: "/images/lessons/lesson1.png"
+      title: "اردو - سبق ١",
+      category: "اردو",
+      question: "سلام کی علامت دکھائیں",
+      answer: "سلام کی علامت ہاتھ ہلانا ہے۔",
+      image: "/images/lessons/urdu1.png"
     },
     { 
       id: 2, 
-      title: "نمبرز ١-١٠",
-      question: "پاکستان کا قومی ترانہ کس نے لکھا؟",
-      answer: "حفیظ جالندھری نے لکھا۔",
-      image: "/images/lessons/lesson2.png"
+      title: "اردو - سبق ٢",
+      category: "اردو",
+      question: "شکریہ کی علامت دکھائیں",
+      answer: "شکریہ کی علامت ٹھوڑی کو چھونا اور آگے لے جانا ہے۔",
+      image: "/images/lessons/urdu2.png"
     },
     { 
       id: 3, 
-      title: "خاندان کے افراد",
-      question: "پاکستان کا سب سے بڑا شہر کونسا ہے؟",
-      answer: "کراچی پاکستان کا سب سے بڑا شہر ہے۔",
-      image: "/images/lessons/lesson3.png"
+      title: "اردو - سبق ٣",
+      category: "اردو",
+      question: "پاکستان کے بانی کا نام کیا ہے؟",
+      answer: "پاکستان کے بانی کا نام قائد اعظم محمد علی جناح ہے۔",
+      image: "/images/lessons/urdu3.png"
     },
+    // English Lessons
     { 
-      id: 4, 
-      title: "رنگ",
-      question: "پاکستان کی سرکاری زبان کونسی ہے؟",
-      answer: "اردو پاکستان کی سرکاری زبان ہے۔",
-      image: "/images/lessons/lesson4.png"
-    },
+    id: 4, 
+    title: "English - Lesson 1",
+    category: "English",
+    question: "What is the capital of Pakistan?",
+    answer: "The capital of Pakistan is Islamabad.",
+    image: "/images/lessons/english1.png"
+  },
+  { 
+    id: 5, 
+    title: "English - Lesson 2",
+    category: "English",
+    question: "What is the national language of Pakistan?",
+    answer: "The national language of Pakistan is Urdu.",
+    image: "/images/lessons/english2.png"
+  },
+  { 
+    id: 6, 
+    title: "English - Lesson 3",
+    category: "English",
+    question: "What is the largest city of Pakistan?",
+    answer: "The largest city of Pakistan is Karachi.",
+    image: "/images/lessons/english3.png"
+  },
+    // Math Lessons
+    { 
+    id: 7, 
+    title: "Math - Lesson 1",
+    category: "Math",
+    question: "What is 5 + 3?",
+    answer: "5 + 3 = 8",
+    image: "/images/lessons/math1.png"
+  },
+  { 
+    id: 8, 
+    title: "Math - Lesson 2",
+    category: "Math",
+    question: "What is 10 - 4?",
+    answer: "10 - 4 = 6",
+    image: "/images/lessons/math2.png"
+  },
+  { 
+    id: 9, 
+    title: "Math - Lesson 3",
+    category: "Math",
+    question: "What is 2 × 6?",
+    answer: "2 × 6 = 12",
+    image: "/images/lessons/math3.png"
+  }
   ];
 
   const currentLesson = lessons[selectedLesson];
@@ -93,14 +140,20 @@ export default function LessonsPage() {
           {lessons.map((lesson, index) => (
             <button
               key={lesson.id}
-              onClick={() => setSelectedLesson(index)}
+              onClick={() => {
+                setSelectedLesson(index);
+                setShowAnswer(false);
+              }}
               style={{
                 ...lessonButtonStyle,
                 ...(selectedLesson === index ? selectedLessonStyle : {}),
               }}
             >
               <span style={lessonNumberStyle}>{lesson.id}</span>
-              {lesson.title}
+              <div>
+                <div style={lessonTitleTextStyle}>{lesson.title}</div>
+                <div style={lessonCategoryStyle}>{lesson.category}</div>
+              </div>
             </button>
           ))}
         </div>
@@ -229,6 +282,20 @@ const lessonNumberStyle = {
   justifyContent: "center",
   fontSize: "0.9rem",
   fontWeight: "700",
+  flexShrink: 0,
+};
+
+const lessonTitleTextStyle = {
+  fontSize: "1rem",
+  fontWeight: "600",
+  textAlign: "left" as const,
+};
+
+const lessonCategoryStyle = {
+  fontSize: "0.75rem",
+  opacity: 0.8,
+  marginTop: "2px",
+  textAlign: "left" as const,
 };
 
 const backLinkStyle = {
@@ -282,7 +349,8 @@ const contentRowStyle = {
 };
 
 const cameraContainerStyle = {
-  flex: "1",
+  width: "500px",
+  height: "500px",
   background: "rgba(0, 0, 0, 0.4)",
   borderRadius: "16px",
   overflow: "hidden",
@@ -290,8 +358,6 @@ const cameraContainerStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: "500px",
-  height: "500px"
 };
 
 const videoStyle = {
@@ -336,8 +402,8 @@ const stopCameraButtonStyle = {
 };
 
 const imageContainerStyle = {
-  width: "200px",
-  height: "250px",
+  width: "350px",
+  height: "300px",
   background: "rgba(255, 255, 255, 0.2)",
   borderRadius: "20px",
   overflow: "hidden",
@@ -348,7 +414,8 @@ const imageContainerStyle = {
 
 const imageStyle = {
   width: "100%",
-  height: "auto",
+  height: "100%",
+  objectFit: "cover" as const,
   display: "block",
 };
 
