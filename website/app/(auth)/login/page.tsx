@@ -3,12 +3,55 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { useRouter } from "next/navigation";
+
 
 export default function Login() {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async () => {
+    setLoading(true);
+    setMessage("");
+
+    // 1. Find user by email
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("email", form.email)
+      .single();
+
+    if (error || !data) {
+      setMessage("User not found!");
+      setLoading(false);
+      return;
+    }
+
+    // 2. Check password match
+    if (data.password !== form.password) {
+      setMessage("Incorrect password!");
+      setLoading(false);
+      return;
+    }
+
+        
+    if (data.password == form.password && data.email == form.email) {
+        setMessage("Login successful!");
+        router.push("/dashboard");
+
+    }
+    
+    setLoading(false);
+
+   
+  };
 
   return (
     <div
@@ -64,6 +107,8 @@ export default function Login() {
         />
 
         <button
+          onClick={handleLogin}
+          disabled={loading}
           style={{
             width: "100%",
             padding: "14px",
@@ -77,8 +122,12 @@ export default function Login() {
             cursor: "pointer",
           }}
         >
-          Login
+          {loading ? "Checking..." : "Login"}
         </button>
+
+        {message && (
+          <p style={{ textAlign: "center", marginTop: "15px" }}>{message}</p>
+        )}
 
         <p style={{ textAlign: "center", marginTop: "20px" }}>
           Don’t have an account?{" "}

@@ -3,13 +3,40 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Register() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    class: "",
     password: "",
   });
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleRegister = async () => {
+    setLoading(true);
+    setMessage("");
+
+    const { data, error } = await supabase.from("users").insert([
+      {
+        name: form.name,
+        email: form.email,
+        class: form.class,
+        password: form.password, // ⚠️ Later we will hash this
+      },
+    ]);
+
+    setLoading(false);
+
+    if (error) {
+      setMessage("Error: " + error.message);
+    } else {
+      setMessage("Account created successfully!");
+    }
+  };
 
   return (
     <div
@@ -64,6 +91,15 @@ export default function Register() {
           style={inputStyle}
         />
 
+        {/* Class */}
+        <input
+          type="text"
+          placeholder="Class (e.g., BSCS, 10th, etc.)"
+          value={form.class}
+          onChange={(e) => setForm({ ...form, class: e.target.value })}
+          style={inputStyle}
+        />
+
         {/* Password */}
         <input
           type="password"
@@ -74,6 +110,8 @@ export default function Register() {
         />
 
         <button
+          onClick={handleRegister}
+          disabled={loading}
           style={{
             width: "100%",
             padding: "14px",
@@ -87,8 +125,12 @@ export default function Register() {
             cursor: "pointer",
           }}
         >
-          Register
+          {loading ? "Registering..." : "Register"}
         </button>
+
+        {message && (
+          <p style={{ marginTop: "15px", textAlign: "center" }}>{message}</p>
+        )}
 
         <p style={{ textAlign: "center", marginTop: "20px" }}>
           Already have an account?{" "}
