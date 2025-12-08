@@ -33,7 +33,7 @@ export default function Home() {
               fontWeight: "900",
             }}
           >
-            Welcome to <span style={{ color: "#a8ffbc" }}>LearnHub</span>
+            Welcome to <span style={{ color: "#a8ffbc" }}>SignLang </span>
           </h1>
 
           <p
@@ -43,8 +43,7 @@ export default function Home() {
               opacity: 0.9,
             }}
           >
-            Master new skills with interactive lessons and track your progress
-            effortlessly.
+            Learn Pakistani Sign Language with ease - Correctly perform PSL gestures through an interactive, real-time learning and evaluation platform.
           </p>
 
           <div
