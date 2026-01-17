@@ -8,10 +8,14 @@ This project is built with a heartfelt mission: to empower the students of a spe
 
 Developed in active collaboration with the school's principal and faculty, this platform is tailored to help children master valid Pakistan Sign Language (PSL) gestures directly derived from their course material. By offering interactive lessons and real-time evaluation, we ensure that students not only learn standard PSL signs but also confidently practice and verify their understanding. This project stands as a testament to the power of technology in creating inclusive, accessible, and meaningful educational environments.
 
+![Special Education Complex](./Media/Images/Special%20Education%20Complex.jpg)
+
 ## 🚀 Overview
 
 The primary goal of SignLang is to make learning Pakistan Sign Language accessible and effective. The platform uses a Convolutional Neural Network (CNN) to recognize hand gestures and provide instant feedback to users, ensuring they are performing signs correctly.
 
+
+![Classroom](./Media/Images/Classroom.jpg)
 ## ✨ Features
 
 - **Interactive Learning**: Real-time evaluation of PSL gestures.
